@@ -21,7 +21,7 @@ function App() {
   }, [focusIndex,listing.length])
 
   const keyFocus = e => {
-    console.log(listing.length - 1, focusIndex)
+    
     if (e.target.id !== 'todo__input') {
       if ((e.keyCode >= 49 && e.keyCode <= 90) || (e.keyCode >= 96 && e.keyCode <= 105)) {
         searchInput.current.focus()
@@ -56,14 +56,14 @@ function App() {
           }
         }
       }
-      if (e.code === 'Space') {
+      if (e.code === 'Space') {     
+        e.preventDefault()
         if (focusIndex >= 0) {
           setCheckbox(listing[focusIndex])
         }
       }
     } else {setFocusIndex(-1)}
   }
-  
 
   function createItem () {
     if (createItem) {
@@ -117,13 +117,14 @@ function App() {
     }))
     canselTodo()
   }
-  
+ 
   function setCheckbox (item) {
     setListing(listing.map(todo => {
       if (todo.id === item.id) {
+        console.log(todo.id, '-из функции', item.id, '-фокус')
         todo.checked = !todo.checked
       }
-      return todo
+       return todo
     }))
   }
 

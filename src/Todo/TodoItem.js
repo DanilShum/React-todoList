@@ -18,7 +18,7 @@ export default function TodoItem({title,id,checked,item,isTarget}, ){
                 <Checkbox
                     type="checkbox" 
                     checked={checked}
-                    onClick={()=> setCheckbox(item)} 
+                    onChange={()=> setCheckbox(item)} 
                 />
             </div>
             <div className="todo__edit">
